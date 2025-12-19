@@ -28,6 +28,26 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 - [Java 21 ou superior](https://adoptium.net/)
 - [Maven](https://maven.apache.org/)
 
+### 2. **Baixando o repositório**
+
+```bash
+git clone https://github.com/flavio-git/car-backend-api
+cd car-backend-api
+```
+### 3. **Construindo com o Maven**
+
+```bash
+mvn clean install -Dmaven.test.skip
+```
+
+### 4. **Rodando**
+
+```bash
+mvn spring-boot:run
+```
+
+O backend estará rodando em (http://localhost:8080).
+
 ----------
 
 📘 Informações Acadêmicas
