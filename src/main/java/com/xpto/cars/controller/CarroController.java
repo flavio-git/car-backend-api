@@ -4,7 +4,6 @@ import com.xpto.cars.exception.RecursoNaoEncontradoException;
 import com.xpto.cars.model.Carro;
 import com.xpto.cars.service.CarroService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,20 +17,8 @@ import java.util.List;
 public class CarroController {
     private final CarroService carroService;
 
-    @GetMapping
-    public ResponseEntity<List<Carro>> listarTodos(@RequestHeader(value = "page", defaultValue = "0") String page,
-                                                   @RequestHeader(value = "size", defaultValue = "25") String size) {
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("X-Total-Count", String.valueOf(carroService.count()));
-        List<Carro> allCarros = carroService.getAllPaginado(Integer.parseInt(page), Integer.parseInt(size));
-        return ResponseEntity.ok(allCarros);
-    }
-
-    @GetMapping("/all")
-    public ResponseEntity<List<Carro>> allCarros() {
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("X-Total-Count", String.valueOf(carroService.count()));
+    @GetMapping()
+    public ResponseEntity<List<Carro>> buscarTodos() {
         List<Carro> allCarros = carroService.listarTodos();
         return ResponseEntity.ok(allCarros);
     }
